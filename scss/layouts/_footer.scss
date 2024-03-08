@@ -1,0 +1,34 @@
+.footer {
+    padding: 130px 0 50px;
+
+    &-row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__label {
+        color: #2e2e2e;
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 20px;
+        color: #535353;
+        line-height: normal;
+        &-logo {
+            margin-right: 9px;
+        }
+    }
+
+    &__copyright {
+        text-align: center;
+        margin-top: 80px;
+        color: #b0b5b4;
+        font-size: 1.8rem;
+        line-height: normal;
+    }
+}

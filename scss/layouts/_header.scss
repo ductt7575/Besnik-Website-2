@@ -1,0 +1,45 @@
+@use "../base/variables" as var;
+
+.header {
+    margin-top: 52px;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .navbar__list {
+        display: flex;
+    }
+
+    .navbar__link {
+        position: relative;
+        color: #2f3a3b;
+        padding: 10px 20px 14px;
+
+        &:hover {
+            text-shadow: 1px 0 0 currentColor;
+            color: #2f3a3b;
+        }
+    }
+    .action {
+        display: flex;
+        align-items: center;
+    }
+    .action__sign-in {
+        color: #494949;
+        line-height: 48px;
+        cursor: pointer;
+        padding: 0px 24px;
+    }
+
+    .action__sign-up {
+        --height: 48px;
+        min-width: 108px;
+        color: var.$primary-color;
+        background: transparent;
+        font-size: 1.6rem;
+        border-radius: 6px;
+        box-shadow: none;
+    }
+}
