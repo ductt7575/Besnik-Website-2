@@ -1,4 +1,4 @@
-@use "../base/variables" as var;
+@use '../base/variables' as var;
 
 .header {
     margin-top: 52px;
@@ -8,20 +8,45 @@
         align-items: center;
         justify-content: space-between;
     }
-    .navbar__list {
-        display: flex;
-    }
+    .navbar {
+        &__list {
+            display: flex;
+        }
 
-    .navbar__link {
-        position: relative;
-        color: #2f3a3b;
-        padding: 10px 20px 14px;
-
-        &:hover {
-            text-shadow: 1px 0 0 currentColor;
+        &__link {
+            display: inline-block;
+            text-align: center;
             color: #2f3a3b;
+            padding: 10px 20px 14px;
+
+            &::before {
+                content: attr(title);
+                font-weight: 600;
+                display: block;
+                height: 0px;
+                overflow: hidden;
+                visibility: hidden;
+            }
+
+            &:hover {
+                font-weight: 600;
+            }
+        }
+
+        &__active {
+            font-weight: 600;
+
+            &::before {
+                content: attr(title);
+                font-weight: 600;
+                display: block;
+                height: 0px;
+                overflow: hidden;
+                visibility: hidden;
+            }
         }
     }
+
     .action {
         display: flex;
         align-items: center;
@@ -41,5 +66,10 @@
         font-size: 1.6rem;
         border-radius: 6px;
         box-shadow: none;
+        transition: 0.25s ease-in;
+        &:hover {
+            color: #fff;
+            background: var.$primary-color;
+        }
     }
 }

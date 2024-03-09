@@ -224,6 +224,7 @@ a {
   font-size: 1.2rem;
   font-weight: 700;
   line-height: normal;
+  letter-spacing: 1px;
 }
 
 .controls {
@@ -263,13 +264,32 @@ a {
   display: flex;
 }
 .header .navbar__link {
-  position: relative;
+  display: inline-block;
+  text-align: center;
   color: #2f3a3b;
   padding: 10px 20px 14px;
 }
+.header .navbar__link::before {
+  content: attr(title);
+  font-weight: 600;
+  display: block;
+  height: 0px;
+  overflow: hidden;
+  visibility: hidden;
+}
 .header .navbar__link:hover {
-  text-shadow: 1px 0 0 currentColor;
-  color: #2f3a3b;
+  font-weight: 600;
+}
+.header .navbar__active {
+  font-weight: 600;
+}
+.header .navbar__active::before {
+  content: attr(title);
+  font-weight: 600;
+  display: block;
+  height: 0px;
+  overflow: hidden;
+  visibility: hidden;
 }
 .header .action {
   display: flex;
@@ -289,6 +309,11 @@ a {
   font-size: 1.6rem;
   border-radius: 6px;
   box-shadow: none;
+  transition: 0.25s ease-in;
+}
+.header .action__sign-up:hover {
+  color: #fff;
+  background: #1ebfc1;
 }
 
 /*Hero section*/
@@ -316,29 +341,51 @@ a {
   align-items: center;
   justify-content: center;
 }
-.hero-action .play-button {
+.hero-action .play-button-wrap {
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
   margin-left: 50px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  transition: 1s ease-in-out;
+}
+.hero-action .play-button-wrap:hover {
+  width: 200px;
+  border-color: #1ebfc1;
+}
+.hero-action .play-button-wrap:hover .play-button {
+  box-shadow: none;
+  background: transparent;
+}
+.hero-action .play-button-wrap:hover .play-active {
+  opacity: 1;
+}
+.hero-action .play-active {
+  white-space: nowrap;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1ebfc1;
+  width: 150px;
+  opacity: 0;
+  transition: 1s ease;
+}
+.hero-action .play-button {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 62px;
   width: 62px;
-  background: #fff;
+  background: transparent;
   border-radius: 50%;
   box-shadow: 0px 22px 50px rgba(0, 0, 0, 0.05);
-  cursor: pointer;
-}
-.hero-action .play-button:hover {
-  background: #f1f1f1;
+  transition: 0.5s ease-in-out;
 }
 .hero-media {
   position: relative;
-}
-.hero__img {
-  width: 576px;
-  height: 631px;
-  object-fit: cover;
-  background-color: #e0f7f6;
 }
 .hero-media-students {
   position: absolute;
@@ -442,6 +489,12 @@ a {
 .hero-media-schedule__progress:nth-child(4)::after {
   width: 39%;
 }
+.hero__img {
+  width: 576px;
+  height: 631px;
+  object-fit: cover;
+  background-color: #e0f7f6;
+}
 
 /*Feature section*/
 .feature {
@@ -486,6 +539,9 @@ a {
   line-height: normal;
   text-decoration-line: underline;
 }
+.course__more:hover {
+  opacity: 0.8;
+}
 .course-list {
   margin-top: 80px;
   display: flex;
@@ -494,10 +550,18 @@ a {
 .course-item {
   position: relative;
   padding-bottom: 124px;
+  transition: 0.5s ease-in-out;
+}
+.course-item:hover {
+  transform: translateY(-20px);
+}
+.course-item:hover .course-item__thumb {
+  transform: scale(105%);
 }
 .course-item__thumb-wrap {
   background: #d0efed;
   border-radius: 8px;
+  overflow: hidden;
 }
 .course-item__thumb-wrap a {
   border-radius: inherit;
@@ -509,6 +573,7 @@ a {
   object-fit: cover;
   opacity: 0.7;
   border-radius: inherit;
+  transition: 0.5s ease-in-out;
 }
 .course-item__info {
   position: absolute;
@@ -557,6 +622,7 @@ a {
   margin-right: 10px;
 }
 
+/* Statistic */
 .stats {
   padding: 200px 0px;
 }
@@ -569,13 +635,19 @@ a {
 }
 .stats-item {
   text-align: center;
+  padding: 50px;
+}
+.stats-item:hover .stats-item__quantity {
+  color: #1ebfc1;
 }
 .stats-item__quantity {
   margin-bottom: 11px;
+  display: inline-block;
   color: #0d1111;
   font-size: 6.2rem;
   font-weight: 700;
   line-height: normal;
+  transition: 0.5s ease-in-out;
 }
 
 /* Review */
@@ -680,6 +752,7 @@ a {
   justify-content: space-between;
 }
 .footer__label {
+  margin-bottom: 5px;
   color: #2e2e2e;
   font-size: 1.8rem;
   font-weight: 500;
@@ -695,8 +768,16 @@ a {
 .footer__link-logo {
   margin-right: 9px;
 }
+.footer__link:hover {
+  text-decoration: underline;
+}
 .footer__copyright {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
   text-align: center;
+  border-top: 1px solid #dddddd;
+  padding-top: 35px;
   margin-top: 80px;
   color: #b0b5b4;
   font-size: 1.8rem;
